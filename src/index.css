@@ -2,9 +2,21 @@
     
 }
 
+
+@font-face {
+    font-family: ProductSans;
+    src: url('./assets/fonts/productSans/productSans.ttf');
+}
+
+@font-face {
+    font-family: ProductSansBold;
+    src: url('./assets/fonts/productSans/productSansBold.ttf');
+}
+
 body {
+
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    font-family:ProductSans, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
         'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;

@@ -1,0 +1,112 @@
+
+.navBar{
+    background-color:white;
+    color: black;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 100%;
+    /* position: fixed;
+    top: 0;
+    left: 0; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard{
+    width: 90%;
+    padding: 20px;
+    margin-top: 30px;
+    align-items: flex-start;
+}
+
+.cardHolder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+.card{
+    width: 30%;
+    height: 200px;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    border-radius: 10px;
+    border-color: lightgray;
+    padding: 10px;
+    color: white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    align-items: flex-start;
+}
+
+.cardHeading{
+
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+
+}
+
+.cardAmount{
+
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+.mainHolder{
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    height: 600px;
+    margin-top: 70px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.mainHeading{
+    margin-bottom: 20px;
+}
+
+.recentActivities{
+    width: 98%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px lightgray;
+}
+
+.recentActivities>.data{
+    width: 100%;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.recentActivities>.data>img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.recentActivities_right{
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.recentActivities_right>.main{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 1px;
+}
+
+.recentActivities_right>.sub{
+    font-size: 14px;
+ color: gray;
+}

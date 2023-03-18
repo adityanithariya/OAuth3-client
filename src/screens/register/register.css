@@ -1,0 +1,30 @@
+
+
+.registrationScreen{
+    width: 95%;
+    padding: 15px;
+    background-color: white;
+}
+
+
+.head{
+    color: blue;
+}
+
+.personalDetails{
+    width: 80%;
+    margin-top: 30px;
+    /* flex-direction: row;
+    justify-content: space-between; */
+    align-items: center;
+}
+
+.detailHolder{
+    align-items: flex-start;
+    width: 30%;
+}
+
+input.detailInput{
+    width: 100%;
+    margin-top: 10px;
+}
