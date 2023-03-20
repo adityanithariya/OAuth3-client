@@ -13,10 +13,6 @@ const App = () => {
 
     const loggedIn = store.loggedIn
 
-
-
-
-
     return (
         <Routes>
             <Route path="/" element={loggedIn ? <Dashboard /> : <LoginScreen />} />

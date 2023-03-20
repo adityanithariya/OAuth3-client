@@ -1,10 +1,18 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./dashboard.css";
 import { setLogoutSession } from "../../features/userSlice";
 import { useDispatch } from "react-redux";
 import { Link,useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+
+    useEffect(() => {
+
+    },[])
+
+    const getDetails = () => {
+        
+    }
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
