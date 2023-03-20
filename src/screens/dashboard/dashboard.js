@@ -1,8 +1,20 @@
 import React from "react";
 import "./dashboard.css";
-
+import { setLogoutSession } from "../../features/userSlice";
+import { useDispatch } from "react-redux";
+import { Link,useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const logout = () => {
+        dispatch(setLogoutSession())
+        navigate('/')
+    }
+
+
     return (
         <div className="baseFlex">
             <div className="navBar">
@@ -11,7 +23,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="navBar_right">
-                    <button className="btn btn-dark">Logout</button>
+                    <button onClick={logout} className="btn btn-dark">Logout</button>
                 </div>
             </div>
 
