@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect } from "react";
-import LoginScreen from "./screens/login/login";
+import LoginScreen from "./screens/signUp/signUp";
 import { Route, Routes } from "react-router-dom"
 import DocScreen from "./screens/docScreen/docScreen";
 import VerifyAdhaar from "./screens/docScreen/verifyPage";
