@@ -25,6 +25,9 @@ export default function DocScreen() {
 
     const sendOTp = async () => {
 
+        navigate(`/verifyAdhaar?clientId=${2+2}`)
+        return
+
         if((adhaarNumber).toString().length != 12){
             alert("Please Enter Valid Adhaar Number");
             return;

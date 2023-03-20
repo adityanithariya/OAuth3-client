@@ -6,24 +6,13 @@ import { ethers } from "ethers";
 import { useStore ,UseSigners,UseProvider} from "../../app/useStore";
 import oauth3 from '../../cache/address.json'
 import abi from '../../artifacts/contracts/OAuth3.sol/OAuth3.json'
-import { useContract } from "../../hooks/useContract";
 
 
 export default function VerifyAdhaar() {
 
-
-
-    const myContract = useContract();
-
-
-
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if(store.loggedIn){
-    //         navigate('/')
-    //     }
-    // }, []);
+
 
     const clientId = new URLSearchParams(window.location.search).get('clientId');
     const [otp, setOtp] = React.useState('');
@@ -37,6 +26,15 @@ export default function VerifyAdhaar() {
 
 
     const verifyAdhaar = async () => {
+
+        const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
+        const contract = new ethers.Contract(oauth3["oauth3"], abi["abi"], provider)
+
+        await provider.send("eth_accounts", [])
+
+
+        const userWallet = new ethers.Wallet("0xde9be858da4a475276426320d5e9262ecfc3ba460bfac56360bfa6c4c28b4ee0", provider)
+        const userSigner = userWallet.connect(provider)
 
 
       
@@ -55,13 +53,15 @@ export default function VerifyAdhaar() {
             true
         ]
 
-            const tx = (await myContract).contract.addAadhaar(adhaarSchema,{gasLimit: 5000000});
-            console.log((await tx.wait()).logs)
-            if ((await tx.wait()).logs) {
-                alert("Adhaar Verified Successfully");
-                navigate("/dashboard");
-            }
+            const tx = await contract.connect(userSigner).addAadhaar(adhaarSchema,{gasLimit: 5000000});
 
+            if ((await tx.wait()).logs) {
+                console.log((await tx.wait()).logs)
+                alert("Adhaar Verified Successfully");
+                //navigate("/dashboard");
+            }else{
+                alert("Error in Verifying Adhaar");
+            }
 
 
         return
