@@ -22,6 +22,10 @@ export default function Dashboard() {
         navigate('/')
     }
 
+    const openProfile = () => {
+        navigate('/profile')
+    }
+
 
     return (
         <div className="baseFlex">
@@ -31,6 +35,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="navBar_right">
+                    <button onClick={openProfile} style={{marginRight:'15px'}} className="btn btn-outline-primary">Profile</button>
                     <button onClick={logout} className="btn btn-dark">Logout</button>
                 </div>
             </div>
@@ -47,7 +52,7 @@ export default function Dashboard() {
                         <h2 className="cardAmount">1/20</h2>
                     </div>
 
-                    <div className="baseFlex card">
+                    <div className="baseFlex card" onClick={()=>navigate('/permissions')}>
                         <span className="cardHeading">Manage Persmission</span>
                         <h2 className="cardAmount">View</h2>
                     </div>
