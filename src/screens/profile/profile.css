@@ -1,0 +1,47 @@
+
+.profileScreen{
+    justify-content: flex-start;
+}
+
+
+.dashboard{
+    width: 95%;
+    padding: 20px;
+    margin-top: 30px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.adhaarHolder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 90%;
+    margin-top: 40px;
+}
+
+.adhaarCard{
+    align-items: flex-start;
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+.title-text {
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: -o-ellipsis-lastline;
+    line-height: 1em;
+    top: 0;
+    margin:0;
+    left: 0;
+}
+
+
+.title{
+    width: 90%;
+}
