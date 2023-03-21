@@ -2,7 +2,7 @@ import React,{useEffect} from "react";
 import './docScreen.css'
 import { Link,useNavigate } from "react-router-dom";
 import './docScreen.css'
-import { useStore ,UseSigners,UseContract,UseProvider} from "../../app/useStore";
+import { useStore } from "../../app/useStore";
 
 export default function DocScreen() {
 
@@ -25,8 +25,7 @@ export default function DocScreen() {
 
     const sendOTp = async () => {
 
-        navigate(`/verifyAdhaar?clientId=${2+2}`)
-        return
+     
 
         if((adhaarNumber).toString().length != 12){
             alert("Please Enter Valid Adhaar Number");
@@ -80,10 +79,13 @@ export default function DocScreen() {
                 </div>
 
                 <div className="baseFlex mt-4 detailHolder">
-                    <span style={{color:'GrayText'}}>We will send an OTP to your registered mobile number !</span>
+                    <span style={{color:'GrayText'}}>We will send an OTP to your registered mobile number ! </span>
+                    <br/>
+                    <span style={{color:'GrayText'}}>We are using a demo acc for otp verification hence it will only take 2 requests per acc. It might stop working after a threshold from 3rd party ! </span>
                     <button disabled={loading} type="button" className="btn btn-primary mt-3" onClick={sendOTp}>Verify Adhaar</button>
                 </div>
 
+                <a style={{position:'absolute',top:0,right:20}} class="btn btn-outline-primary mt-4"href="https://goerli.etherscan.io/address/0x5Ea8bcA9c9b67BDa60b3407AEc642f22c15D1e76" role="button">Deployed At 0x5EaXXXe76</a>
             </div>
 
         </div>

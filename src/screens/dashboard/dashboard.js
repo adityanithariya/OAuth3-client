@@ -1,10 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./dashboard.css";
 import { setLogoutSession } from "../../features/userSlice";
 import { useDispatch } from "react-redux";
 import { Link,useNavigate } from "react-router-dom";
+import { LoggedIn } from "../../app/useStore";
 
 export default function Dashboard() {
+
+    const loggedIn = LoggedIn()
+
+    // useEffect(() => {
+    //     if(loggedIn==false){
+    //         navigate('/')
+    //     }
+    // },[])
+
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -12,6 +22,10 @@ export default function Dashboard() {
     const logout = () => {
         dispatch(setLogoutSession())
         navigate('/')
+    }
+
+    const openProfile = () => {
+        navigate('/profile')
     }
 
 
@@ -23,6 +37,8 @@ export default function Dashboard() {
                 </div>
 
                 <div className="navBar_right">
+                <a style={{marginRight:50}} class="btn btn-outline-primary"href="https://goerli.etherscan.io/address/0x5Ea8bcA9c9b67BDa60b3407AEc642f22c15D1e76" role="button">Deployed At 0x5EaXXXe76</a>
+                    <button onClick={openProfile} style={{marginRight:'15px'}} className="btn btn-outline-primary">Profile</button>
                     <button onClick={logout} className="btn btn-dark">Logout</button>
                 </div>
             </div>
@@ -39,7 +55,7 @@ export default function Dashboard() {
                         <h2 className="cardAmount">1/20</h2>
                     </div>
 
-                    <div className="baseFlex card">
+                    <div className="baseFlex card" onClick={()=>navigate('/permissions')}>
                         <span className="cardHeading">Manage Persmission</span>
                         <h2 className="cardAmount">View</h2>
                     </div>
