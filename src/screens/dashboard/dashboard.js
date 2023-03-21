@@ -3,16 +3,18 @@ import "./dashboard.css";
 import { setLogoutSession } from "../../features/userSlice";
 import { useDispatch } from "react-redux";
 import { Link,useNavigate } from "react-router-dom";
+import { LoggedIn } from "../../app/useStore";
 
 export default function Dashboard() {
 
-    useEffect(() => {
+    const loggedIn = LoggedIn()
 
+    useEffect(() => {
+        if(loggedIn==false){
+            navigate('/')
+        }
     },[])
 
-    const getDetails = () => {
-        
-    }
 
     const dispatch = useDispatch()
     const navigate = useNavigate()

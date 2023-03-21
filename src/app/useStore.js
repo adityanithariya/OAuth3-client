@@ -6,3 +6,7 @@ export const useStore = () => {
         loggedIn: useSelector(selectLoggedIn)
     }
 }
+
+export function LoggedIn(){
+    return useSelector(selectLoggedIn)
+}

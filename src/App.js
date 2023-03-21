@@ -14,12 +14,9 @@ import PermScreen from "./screens/perm/perm";
 const App = () => {
 
     const store = useStore()
-
-    const loggedIn = store.loggedIn
-
     return (
         <Routes>
-            <Route path="/" element={loggedIn ? <Dashboard /> : <LoginScreen />} />
+            <Route path="/" element={<LoginScreen />} />
             <Route path="/uploadDocument" element={ <DocScreen />} />
             <Route path="/verifyAdhaar" element={ <VerifyAdhaar />} />
             <Route path="/dashboard" element={<Dashboard />} />
