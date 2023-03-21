@@ -3,7 +3,7 @@ import NavBar from "../../components/navbar/navbar";
 import './sdkLogin.css'
 import { ethers } from "ethers";
 import oauth3 from '../../cache/address.json'
-import abi from '../../artifacts/contracts/OAuth3.sol/OAuth3.json'
+import abi from '../../artifacts/contracts/Client.sol/ClientContract.json'
 
 export default function SDKLogin() {
 
@@ -27,31 +27,49 @@ export default function SDKLogin() {
     
 
     const generateCred = async () => {
-        try {
+    
             setLoading(true)
-            const client_id = makeid(10)
-            const client_secret = makeid(10)
-
         
-            const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
-            const OAuth3Contract = new ethers.Contract(oauth3["oauth3"], abi["abi"], provider)
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const ClientContract = new ethers.Contract(oauth3["client"], abi["abi"], provider)
 
             await provider.send("eth_accounts", [])
 
             const userWallet = new ethers.Wallet("0xde9be858da4a475276426320d5e9262ecfc3ba460bfac56360bfa6c4c28b4ee0", provider)
             const userSigner = userWallet.connect(provider)
 
-            const tx = await OAuth3Contract.connect(userSigner).addClient(client_id,client_secret,{gasLimit: 5000000});
-            console.log(await tx.wait())
-            setClientID(client_id)
-            setClientSecret(client_secret)
-            setShowCred(true)
-            setLoading(false)
-        } catch (error) {
-            setLoading(false)
-            console.log(error)
-            alert('Something went wrong')
-        }
+            const ownerWallet = new ethers.Wallet(process.env.REACT_APP_OWNER_PRIVATE_KEY, provider)
+            const ownerSigner = ownerWallet.connect(provider)
+
+            const chainData = await ClientContract.connect(ownerSigner).getClient(userSigner.address)
+
+            if(chainData[1] == ''){
+                const client_id = makeid(10)
+                const client_secret = makeid(10)
+
+                const tx = await ClientContract.connect(userSigner).addClient(client_id,client_secret,{gasLimit: 5000000});
+                await tx.wait()
+                setClientID(client_id)
+                setClientSecret(client_secret)
+                setShowCred(true)
+                setLoading(false)
+            }else{
+                console.log("client already exists")
+                setClientID(chainData[1])
+                setClientSecret(chainData[2])
+                setShowCred(true)
+                setLoading(false)
+            }
+
+            
+         
+            // const chainData = await ClientContract.connect(userSigner).getClient(userSigner.address)
+           
+        // } catch (error) {
+        //     setLoading(false)
+        //     console.warn(error)
+        //     alert('Something went wrong')
+        // }
         
 
     }

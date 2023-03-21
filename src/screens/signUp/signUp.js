@@ -4,9 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import oauth3 from '../../cache/address.json'
 import abi from '../../artifacts/contracts/OAuth3.sol/OAuth3.json'
-import { useDispatch } from "react-redux";
-import { setActiveChain } from "../../features/userSlice";
 import { useStore } from "../../app/useStore";
+import AddBox from "../../components/add/add";
 
 
 export default function LoginScreen() {
@@ -36,7 +35,7 @@ export default function LoginScreen() {
     }, [window?.ethereum]);
 
     const getProvider = async () => {
-        const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
         const OAuth3Contract = new ethers.Contract(oauth3["oauth3"], abi["abi"], provider)
 
         setContract(OAuth3Contract)
@@ -57,12 +56,9 @@ export default function LoginScreen() {
     }
 
     const onConnectPress = async () => {
+
         try {
             await provider.send("eth_accounts", [])
-            //const signer = provider.getSigner()
-            //const address = await signer.getAddress()
-            
-
             const userWallet = new ethers.Wallet("0xde9be858da4a475276426320d5e9262ecfc3ba460bfac56360bfa6c4c28b4ee0", provider)
             const userSigner = userWallet.connect(provider)
 
@@ -82,14 +78,18 @@ export default function LoginScreen() {
                 }
             }else{
                 console.log("user found")
-                navigate('/dashboard')
+                if(store.loggedIn){
+                    navigate('/dashboard')
+                }else{
+                    navigate('/uploadDocument')
+                }
+               
             }
         } catch (error) {
             console.log(error);
             alert(error?.message ? error.message : 'Please connect to Metamask')
         }
 
-        //navigate("/register");
     }
 
 
@@ -105,6 +105,7 @@ export default function LoginScreen() {
                 </p>
                 <button type="button" className="btn btn-outline-light mt-3" onClick={onConnectPress}>Connect Metamask</button>
             </div>
+            <a class="btn btn-outline-light"href="https://goerli.etherscan.io/address/0x5Ea8bcA9c9b67BDa60b3407AEc642f22c15D1e76" role="button">Deployed At 0x5EaXXXe76</a>
         </section>
     );
 }

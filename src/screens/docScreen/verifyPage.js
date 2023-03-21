@@ -1,13 +1,10 @@
 import React from "react";
 import './docScreen.css'
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
-import { useStore ,UseSigners,UseProvider} from "../../app/useStore";
 import oauth3 from '../../cache/address.json'
 import abi from '../../artifacts/contracts/OAuth3.sol/OAuth3.json'
 import { useDispatch } from "react-redux";
-import { setActiveSession } from "../../features/userSlice";
 
 export default function VerifyAdhaar() {
 
@@ -39,7 +36,7 @@ export default function VerifyAdhaar() {
         
         setLoading(true);
 
-        const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
         const contract = new ethers.Contract(oauth3["oauth3"], abi["abi"], provider)
 
         await provider.send("eth_accounts", [])
@@ -129,7 +126,7 @@ export default function VerifyAdhaar() {
                     </div>
 
                 </div>
-
+                <a style={{position:'absolute',top:0,right:20}} class="btn btn-outline-primary mt-4" href="https://goerli.etherscan.io/address/0x5Ea8bcA9c9b67BDa60b3407AEc642f22c15D1e76" role="button">Deployed At 0x5EaXXXe76</a>
             </div>
         </div>
     )

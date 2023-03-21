@@ -31,7 +31,7 @@ const Profile = () => {
     }, [window?.ethereum]);
 
     const getProvider = async () => {
-        const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
         const OAuth3Contract = new ethers.Contract(oauth3["oauth3"], abi["abi"], provider)
 
         await provider.send("eth_accounts", [])

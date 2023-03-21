@@ -23,6 +23,7 @@ export default function NavBar(props){
             </div>
 
             <div className="navBar_right">
+                <a style={{marginRight:50}} class="btn btn-outline-primary" href="https://goerli.etherscan.io/address/0x5Ea8bcA9c9b67BDa60b3407AEc642f22c15D1e76" role="button">Deployed At 0x5EaXXXe76</a>
                 <button onClick={logout} className="btn btn-dark">Logout</button>
             </div>
         </div>

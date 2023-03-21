@@ -9,6 +9,7 @@ import { useStore } from "./app/useStore";
 import Profile from "./screens/profile/profile";
 import SDKLogin from "./screens/sdk/sdkLogin";
 import ManageScreen from "./screens/manage/manage";
+import PermScreen from "./screens/perm/perm";
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/permissions" element={<ManageScreen />} />
             <Route path="/sdk" element={<SDKLogin />} />
+            <Route path="/perm" element={<PermScreen />} />
         </Routes>
 
     );
