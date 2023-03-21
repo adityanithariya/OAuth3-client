@@ -42,8 +42,7 @@ export default function VerifyAdhaar() {
         await provider.send("eth_accounts", [])
 
 
-        const userWallet = new ethers.Wallet("0xde9be858da4a475276426320d5e9262ecfc3ba460bfac56360bfa6c4c28b4ee0", provider)
-        const userSigner = userWallet.connect(provider)
+        const userSigner = await provider.getSigner();
 
 
         try {

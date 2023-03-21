@@ -9,11 +9,11 @@ export default function Dashboard() {
 
     const loggedIn = LoggedIn()
 
-    useEffect(() => {
-        if(loggedIn==false){
-            navigate('/')
-        }
-    },[])
+    // useEffect(() => {
+    //     if(loggedIn==false){
+    //         navigate('/')
+    //     }
+    // },[])
 
 
     const dispatch = useDispatch()
