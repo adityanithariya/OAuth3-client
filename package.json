@@ -11,11 +11,6 @@
         "url": "https://github.com/adityanithariya/OAuth3-client/issues"
     },
     "private": true,
-    "engines": {
-        "npm": "9.6.1",
-        "node": "18.15.0",
-        "yarn": "1.22.19"
-    },
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.3",
         "@testing-library/jest-dom": "^5.14.1",
